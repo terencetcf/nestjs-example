@@ -1,15 +1,21 @@
 import { InternalServerErrorException } from '@nestjs/common';
 import { EnvKey } from '@tt/core/constants';
 
-const getEnvValue = (key: string): string => {
+const getEnvValue = (key: string, defaultValue?: SafeAny): string => {
   const value = process.env[key];
-  if (!value) {
+  if (!value && defaultValue == undefined) {
     throw new InternalServerErrorException(
       `Unable find environment variable - '${key}'`,
     );
   }
 
-  return value;
+  return value || defaultValue;
+};
+
+const getInt = (key: string, defaultValue?: SafeAny): number => {
+  const value = getEnvValue(key, defaultValue);
+
+  return parseInt(value);
 };
 
 const isDevelopment = (): boolean =>
@@ -17,5 +23,6 @@ const isDevelopment = (): boolean =>
 
 export const envUtil = {
   get: getEnvValue,
+  getInt,
   isDevelopment,
 };
