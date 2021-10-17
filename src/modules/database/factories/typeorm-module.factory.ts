@@ -1,8 +1,11 @@
+import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { appConfig } from '@tt/core/configs';
+import { IConfigs } from '@tt/core/configs';
 
-export const typeOrmModuleFactory = async (): Promise<TypeOrmModuleOptions> => {
+export const typeOrmModuleFactory = async (
+  configService: ConfigService<IConfigs>,
+): Promise<TypeOrmModuleOptions> => {
   return {
-    ...appConfig().database,
+    ...configService.get('database'),
   };
 };

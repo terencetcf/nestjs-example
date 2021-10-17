@@ -11,7 +11,7 @@ const isDevelopment = (): boolean =>
 const defaultConnectionOptions: TypeOrmModuleOptions = {
   type: 'postgres',
   host: envUtil.get(EnvKey.DB_HOST),
-  port: Number(envUtil.get(EnvKey.DB_PORT)),
+  port: envUtil.getInt(EnvKey.DB_PORT),
   username: envUtil.get(EnvKey.DB_USERNAME),
   password: envUtil.get(EnvKey.DB_PASSWORD),
   database: envUtil.get(EnvKey.DB_NAME),
@@ -32,8 +32,8 @@ export interface IConfigs {
 }
 
 export const appConfig = (): IConfigs => ({
-  env: envUtil.get(EnvKey.NODE_ENV),
+  env: envUtil.get(EnvKey.NODE_ENV, 'dev'),
   database: defaultConnectionOptions,
-  port: Number(envUtil.get(EnvKey.API_PORT)),
+  port: envUtil.getInt(EnvKey.API_PORT, 8080),
   version: 'v1',
 });

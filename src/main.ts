@@ -1,5 +1,6 @@
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
-import { appConfig, setupHttpServerConfigurations } from '@tt/core/configs';
+import { IConfigs, setupHttpServerConfigurations } from '@tt/core/configs';
 import { globalFilters } from '@tt/core/filters';
 import { globalPipes } from '@tt/core/pipes';
 import { setupSwagger } from '@tt/core/services';
@@ -17,18 +18,21 @@ async function bootstrap(): Promise<void> {
 
   setupHttpServerConfigurations(app);
 
-  const appCfg = appConfig();
+  const configService = app.get<ConfigService<IConfigs>>(ConfigService);
+  const version = configService.get('version');
+  const port = configService.get('port');
   const logger = app.get(Logger);
+
   app.useLogger(logger);
-  app.setGlobalPrefix(appCfg.version);
+  app.setGlobalPrefix(version);
   app.enableCors();
   app.use(compression());
   app.useGlobalPipes(...globalPipes());
   app.useGlobalFilters(...globalFilters(app, logger));
   app.useGlobalInterceptors(...globalInterceptors(app));
 
-  setupSwagger(app);
+  setupSwagger(app, version);
 
-  await app.listen(appCfg.port);
+  await app.listen(port);
 }
 bootstrap();
