@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserController GET /users should return OK status with expected response body 1`] = `
+Object {
+  "data": Array [
+    Object {
+      "first_name": "John",
+      "id": "070b50ca-486a-41e7-9a2e-cda2c16204ac",
+      "last_name": "Doe",
+      "username": "test_user",
+    },
+  ],
+}
+`;
+
+exports[`UserController POST /users should return BadRequest status if payload exceeded limits 1`] = `
+Object {
+  "error": Object {
+    "message": Array [
+      "username must be shorter than or equal to 50 characters",
+      "first_name must be shorter than or equal to 100 characters",
+      "last_name must be shorter than or equal to 100 characters",
+    ],
+  },
+}
+`;
+
+exports[`UserController POST /users should return BadRequest status if payload is invalid 1`] = `
+Object {
+  "error": Object {
+    "message": Array [
+      "username must be longer than or equal to 2 characters",
+      "username should not be empty",
+      "first_name must be longer than or equal to 2 characters",
+      "first_name should not be empty",
+      "last_name must be longer than or equal to 2 characters",
+      "last_name should not be empty",
+    ],
+  },
+}
+`;
+
+exports[`UserController POST /users should return OK status with expected response body 1`] = `
+Object {
+  "data": Object {
+    "first_name": "Steve",
+    "id": Any<String>,
+    "last_name": "Job",
+    "username": "new-username",
+  },
+}
+`;

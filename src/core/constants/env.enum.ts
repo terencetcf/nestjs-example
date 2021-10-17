@@ -1,0 +1,12 @@
+export enum EnvKey {
+  NODE_ENV = 'NODE_ENV',
+
+  API_PORT = 'API_PORT',
+
+  DB_HOST = 'DB_HOST',
+  DB_PORT = 'DB_PORT',
+  DB_USERNAME = 'DB_USERNAME',
+  DB_PASSWORD = 'DB_PASSWORD',
+  DB_NAME = 'DB_NAME',
+  DB_SCHEMA = 'DB_SCHEMA',
+}

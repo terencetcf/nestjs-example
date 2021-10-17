@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserService createUser should return the created company 1`] = `
+Object {
+  "first_name": "Steve",
+  "id": Any<String>,
+  "last_name": "Job",
+  "username": "new-username",
+}
+`;
+
+exports[`UserService getUsers should return expected result 1`] = `
+Array [
+  UserDto {
+    "first_name": "John",
+    "id": "070b50ca-486a-41e7-9a2e-cda2c16204ac",
+    "last_name": "Doe",
+    "username": "test_user",
+  },
+]
+`;
