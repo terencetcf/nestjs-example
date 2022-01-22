@@ -28,7 +28,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "compression": "^1.7.4",
-    "nanoid": "^3.1.30",
+    "nanoid": "^3.1.31",
     "nestjs-pino": "^2.2.0",
     "pg": "^8.7.1",
     "pino-http": "^5.8.0",
