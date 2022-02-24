@@ -56,7 +56,7 @@
     "better-sqlite3": "7.4.5",
     "eslint": "8.5.0",
     "eslint-config-prettier": "8.3.0",
-    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-import": "2.25.4",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "expect": "27.5.1",
