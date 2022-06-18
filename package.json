@@ -63,7 +63,7 @@
     "factory.ts": "0.5.2",
     "husky": "7.0.4",
     "jest": "27.5.1",
-    "lint-staged": "12.1.4",
+    "lint-staged": "12.5.0",
     "prettier": "2.5.1",
     "supertest": "6.1.6",
     "ts-jest": "27.1.3",
