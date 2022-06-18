@@ -5169,10 +5169,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nestjs-pino@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/nestjs-pino/-/nestjs-pino-2.2.0.tgz#0f4e56531915e596696e0c2c8af4eae1fb6767a9"
-  integrity sha512-baKTURDRAW4MeF1JdwznccHXk/xCGnrPIMq4J+1NzFxvBDHMwrlzEV90+k1yvPX7QsCoz5G/gMV9BcbGE2+UAA==
+nestjs-pino@2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/nestjs-pino/-/nestjs-pino-2.6.0.tgz#bb70c87acc325baf265521a8b1f1b7a7b46d22fd"
+  integrity sha512-sudCZ5wTjXf4L2iL1G1eh5PL15S5ADtjaW8bnNlg02ZKB81ySdSa0CJ4gMhB3UlGLWS80JoZVp+R3jeRizoJYA==
 
 node-abi@^3.3.0:
   version "3.5.0"
