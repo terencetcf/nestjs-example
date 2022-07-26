@@ -1,13 +1,12 @@
 import { InternalServerErrorException } from '@nestjs/common';
-import { ConnectionOptions, createConnection } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
-export const typeOrmConnectionFactory = async (options?: ConnectionOptions) => {
+export const typeOrmDataSourceFactory = async (options?: DataSourceOptions) => {
   if (!options) {
     throw new InternalServerErrorException(
       'Connection options is not available!',
     );
   }
 
-  const connection = await createConnection(options);
-  return connection;
+  return new DataSource(options);
 };
