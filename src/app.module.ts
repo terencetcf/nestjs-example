@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { appConfig } from '@tt/core/configs';
-import { DatabaseModule } from '@tt/modules/database';
+import { DatabaseModule } from '@tt/core/database';
 import { StatusModule } from '@tt/modules/status';
 import { UserModule } from '@tt/modules/user';
 import { LoggerModule } from 'nestjs-pino';

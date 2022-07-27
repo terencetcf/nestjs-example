@@ -7,13 +7,7 @@ import { globalInterceptors } from '@tt/core/interceptors';
 import { globalPipes } from '@tt/core/pipes';
 import { Logger, LoggerModule } from 'nestjs-pino';
 import request from 'supertest';
-import {
-  Connection,
-  createConnection,
-  EntityTarget,
-  getRepository,
-  Repository,
-} from 'typeorm';
+import { DataSource, EntityTarget, Repository } from 'typeorm';
 
 import { TEST_DB_CONFIG, testConfiguration } from './test-db.setup';
 
@@ -24,7 +18,7 @@ export type EntityTestData = {
 
 export class TestApp {
   app!: INestApplication;
-  connection!: Connection;
+  dataSource!: DataSource;
   testingModule!: TestingModule;
 
   static create(): TestApp {
@@ -37,7 +31,7 @@ export class TestApp {
     repositoryEntities?: Type<unknown>[],
     testDataToBeAddedToDb?: EntityTestData[],
   ): Promise<TestApp> {
-    this.connection = await createConnection(TEST_DB_CONFIG);
+    this.dataSource = await new DataSource(TEST_DB_CONFIG).initialize();
 
     await this.setupApp(controllers, providers, repositoryEntities);
     await this.addToDB(testDataToBeAddedToDb);
@@ -52,7 +46,7 @@ export class TestApp {
   ): Promise<TestApp> {
     const repoEntityProviders = (repositoryEntities || []).map((repo) => ({
       provide: getRepositoryToken(repo),
-      useValue: this.connection.getRepository(repo),
+      useValue: this.dataSource.getRepository(repo),
     }));
 
     const builder = Test.createTestingModule({
@@ -86,7 +80,10 @@ export class TestApp {
   }
 
   async close(): Promise<void> {
-    await this.connection.close();
+    if (this.dataSource) {
+      await this.dataSource.destroy();
+    }
+
     await this.app.close();
   }
 
@@ -95,7 +92,7 @@ export class TestApp {
   }
 
   getRepo<T>(entityClass: EntityTarget<T>): Repository<T> {
-    return getRepository(entityClass, TEST_DB_CONFIG.name);
+    return this.dataSource.getRepository(entityClass);
   }
 
   async addDataToDB<T>(entityClass: EntityTarget<T>, data: T): Promise<void> {

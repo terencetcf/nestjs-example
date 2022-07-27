@@ -12,7 +12,17 @@ const config: Config.InitialOptions = {
   setupFiles: ['<rootDir>/test/__setup__/env.setup.ts'],
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
-  coveragePathIgnorePatterns: ['<rootDir>/src/main.ts'],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/src/main.ts',
+    '<rootDir>/src/app.module.ts',
+    '<rootDir>/src/core',
+    '<rootDir>/src/typings',
+  ],
+  coverageThreshold: {
+    global: {
+      functions: 100,
+    },
+  },
   globals: {
     'ts-jest': {
       diagnostics: false,

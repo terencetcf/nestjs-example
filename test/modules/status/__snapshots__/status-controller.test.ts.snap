@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatusController GET /status should return OK status with expected response body 1`] = `
+Object {
+  "data": Object {
+    "env": "development",
+    "name": "nestjs-example",
+    "version": "1.0.0",
+  },
+}
+`;
