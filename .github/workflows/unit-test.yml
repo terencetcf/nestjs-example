@@ -20,7 +20,7 @@ jobs:
         run: yarn install
 
       - name: Run tests
-        run: yarn test:coverage
+        run: yarn test:ci
 
       - name: Check test coverage
         uses: terencetcf/github-actions-lcov-minimum-coverage-checker@v1
