@@ -29,7 +29,7 @@
     "compression": "^1.7.4",
     "nanoid": "^4.0.0",
     "nestjs-pino": "^3.1.1",
-    "pg": "^8.7.3",
+    "pg": "8.8.0",
     "pino-http": "^8.2.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
